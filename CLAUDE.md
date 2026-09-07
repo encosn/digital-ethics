@@ -60,9 +60,23 @@
 **1차 완성 (2026-08-12).** 시험 141개 통과 (`ethics-core` 42 + `topics` 99).
 개발 서버·빌드·되돌아오기(새로고침 후 이어 하기)까지 브라우저로 확인했다.
 
+### 배포 (2026-09-07)
+- [x] GitHub 저장소 `encosn/digital-ethics` 생성, `main` 브랜치 푸시
+- [x] Actions 배포(`npm ci` → `npm test` → `npm run build` → Pages) 성공
+      → **https://encosn.github.io/digital-ethics/**
+- [x] 배포된 사이트를 브라우저로 열어 콘솔 오류 0건, 자원 전부 200 확인
+      (이것으로 `dist/` 빌드 결과 실물 확인도 함께 끝났다)
+- [x] `hub/data.js` 의 `url` 채우고 `status: 'ready'` 로 변경 → hub 저장소에 푸시,
+      배포된 hub 단원 페이지에서 활동이 나오는 것까지 확인
+
+  ⚠️ 첫 배포에서 두 가지에 걸렸다 — ① `gh` 토큰에 `workflow` 권한이 없어
+  `.github/workflows/` 푸시가 거부됐다(`gh auth refresh -h github.com -s workflow` 로 해결).
+  ② 새 저장소라 워크플로의 `configure-pages`(`enablement:true`)가
+  "Resource not accessible by integration" 으로 실패했다 —
+  `gh api -X POST repos/encosn/digital-ethics/pages -f build_type=workflow` 로 Pages 를 켠 뒤
+  `gh run rerun` 하니 통과했다. **다음에 새 앱을 배포할 때도 같은 순서로 하면 된다.**
+
 **아직 안 한 것**
-- [ ] **GitHub 저장소·Pages 배포** — 저장소도 워크플로도 아직 없다.
-      배포하면 `hub/data.js` 5단원의 `status` 를 `'ready'` 로 바꾸고 `url` 을 채워야 한다.
 - [ ] **`index.html` 더블클릭 실물 확인** — 외부 의존성 0개, ES 모듈·fetch·CDN 미사용이라
       열려야 하지만, 개발 환경의 브라우저가 `file://` 를 막아 확인하지 못했다.
       (`ai-explorer`·`algorithm-flowchart`·`data-report` 도 같은 상태다)
