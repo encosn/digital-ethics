@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>디지털 윤리 모둠 탐구 — 사이버 폭력·디지털 중독·개인 정보·저작권</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="top">
+    <div class="top-inner">
+      <h1 class="top-title"><span class="top-emoji">🌏</span> 디지털 윤리 모둠 탐구</h1>
+      <p class="top-sub">V. 디지털 문화 — 2. 디지털 윤리 · 모둠별로 한 주제를 맡아 정리하고, 사례를 조사해 발표해요.</p>
+    </div>
+  </header>
+
+  <nav class="steps" id="steps" aria-label="단계"></nav>
+
+  <main id="main">
+    <!-- 1단계 : 주제 고르기 -->
+    <section class="panel" id="panel-1">
+      <h2 class="panel-title">1단계. 우리 모둠이 발표할 주제 고르기</h2>
+      <p class="panel-help">주제 카드를 눌러 하나를 고르세요. 한 모둠이 한 주제를 맡습니다.</p>
+
+      <div class="group-box">
+        <label class="field">
+          <span class="field-label">모둠 이름</span>
+          <input type="text" id="group-name" class="text-input" placeholder="예) 1모둠, 지킴이 모둠" maxlength="20">
+        </label>
+        <p class="field-note">모둠 이름은 이 브라우저에만 저장돼요. 학번·이름은 마지막 단계에서 넣고, <b>저장하지 않아요.</b></p>
+      </div>
+
+      <div class="topic-grid" id="topic-grid"></div>
+
+      <div class="step-foot">
+        <button type="button" class="btn btn-next" id="go-2" disabled>교과서 정리 보러 가기 →</button>
+      </div>
+    </section>
+
+    <!-- 2단계 : 교과서 정리 보기 -->
+    <section class="panel" id="panel-2" hidden>
+      <h2 class="panel-title">2단계. 교과서 정리 보기</h2>
+      <p class="panel-help">우리 주제의 교과서 내용이 그림으로 정리되어 있어요. 소주제 단추로 옮겨 다닐 수 있어요.</p>
+
+      <div class="viewer-bar">
+        <div class="viewer-topics" id="viewer-topics"></div>
+        <p class="viewer-note">다른 모둠 발표를 들을 때에도 여기서 그 주제를 열어 볼 수 있어요.</p>
+      </div>
+
+      <div class="sub-tabs" id="sub-tabs"></div>
+      <div class="blocks" id="blocks"></div>
+
+      <div class="step-foot">
+        <button type="button" class="btn btn-back" id="back-1">← 주제 고르기</button>
+        <button type="button" class="btn btn-next" id="go-3">내용 정리하러 가기 →</button>
+      </div>
+    </section>
+
+    <!-- 3단계 : 내용 정리하기 -->
+    <section class="panel" id="panel-3" hidden>
+      <h2 class="panel-title">3단계. 내용 정리하기</h2>
+      <p class="panel-help">먼저 핵심 확인 퀴즈로 이해했는지 점검하고, 우리 모둠의 말로 정리해요.</p>
+
+      <div class="card-block">
+        <h3 class="block-title">핵심 확인 퀴즈</h3>
+        <p class="block-note">답을 고르거나 쓰고 <b>정답 확인</b>을 누르세요. 모르겠으면 <b>힌트</b>를 눌러요.</p>
+        <div class="quiz-list" id="quiz-list"></div>
+        <div class="quiz-foot">
+          <button type="button" class="btn btn-check" id="quiz-check">정답 확인</button>
+          <button type="button" class="btn btn-ghost" id="quiz-reset">다시 풀기</button>
+          <span class="quiz-score" id="quiz-score"></span>
+        </div>
+      </div>
+
+      <div class="card-block">
+        <h3 class="block-title">우리 모둠의 정리</h3>
+        <p class="block-note">교과서 문장을 그대로 옮기지 말고, 모둠에서 이야기한 말로 적어요. 발표 자료에 그대로 들어갑니다.</p>
+        <div class="summary-list" id="summary-list"></div>
+      </div>
+
+      <div class="step-foot">
+        <button type="button" class="btn btn-back" id="back-2">← 교과서 정리</button>
+        <button type="button" class="btn btn-next" id="go-4">사례 조사하러 가기 →</button>
+      </div>
+    </section>
+
+    <!-- 4단계 : 사례 조사하기 -->
+    <section class="panel" id="panel-4" hidden>
+      <h2 class="panel-title">4단계. 실제 사례 조사하기</h2>
+      <p class="panel-help">우리 주제와 관련된 <b>실제로 일어난 일</b>을 찾아 정리해요. 사례는 최대 4개까지 넣을 수 있어요.</p>
+
+      <div class="card-block sample-block">
+        <h3 class="block-title">교과서에 나온 사례 (보기)</h3>
+        <div class="sample" id="case-sample"></div>
+      </div>
+
+      <div class="card-block">
+        <h3 class="block-title">조사할 때 찾아볼 곳</h3>
+        <div class="links" id="case-links"></div>
+        <p class="block-note">뉴스 기사를 쓸 때에는 <b>언론사 이름과 날짜</b>를 출처 칸에 함께 적어요.</p>
+      </div>
+
+      <div class="cases" id="cases"></div>
+
+      <div class="cases-foot">
+        <button type="button" class="btn btn-add" id="case-add">＋ 사례 추가하기</button>
+        <span class="cases-count" id="cases-count"></span>
+      </div>
+
+      <div class="step-foot">
+        <button type="button" class="btn btn-back" id="back-3">← 내용 정리</button>
+        <button type="button" class="btn btn-next" id="go-5">발표 준비하러 가기 →</button>
+      </div>
+    </section>
+
+    <!-- 5단계 : 발표하기 -->
+    <section class="panel" id="panel-5" hidden>
+      <h2 class="panel-title">5단계. 발표하기</h2>
+      <p class="panel-help">모둠이 정리한 내용이 발표 슬라이드로 만들어졌어요. 점검한 뒤 발표하거나 PDF로 저장하세요.</p>
+
+      <div class="card-block">
+        <h3 class="block-title">점검하기</h3>
+        <div class="check-list" id="check-list"></div>
+      </div>
+
+      <div class="card-block no-print-block">
+        <h3 class="block-title">PDF에 넣을 이름 (저장되지 않아요)</h3>
+        <div class="student-row">
+          <label class="field field-sm">
+            <span class="field-label">학번</span>
+            <input type="text" id="student-class" class="text-input" placeholder="예) 1학년 3반 12번" maxlength="30">
+          </label>
+          <label class="field field-sm">
+            <span class="field-label">모둠원 이름</span>
+            <input type="text" id="student-name" class="text-input" placeholder="예) 김○○, 이○○, 박○○" maxlength="60">
+          </label>
+        </div>
+        <p class="field-note">여기 적은 내용은 <b>PDF 머리말에만</b> 쓰이고 브라우저에 저장되지 않아요. 교실 공용 컴퓨터에서 다음 학생에게 이름이 남지 않게 하려는 거예요.</p>
+      </div>
+
+      <div class="present-bar">
+        <button type="button" class="btn btn-present" id="present-start">▶ 전체 화면으로 발표하기</button>
+        <button type="button" class="btn btn-pdf" id="pdf-save">PDF로 저장</button>
+      </div>
+
+      <div class="slides" id="slides"></div>
+
+      <div class="step-foot">
+        <button type="button" class="btn btn-back" id="back-4">← 사례 조사</button>
+        <button type="button" class="btn btn-ghost" id="reset-all">처음부터 다시 하기</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- 발표 모드 (전체 화면) -->
+  <div class="show" id="show" hidden>
+    <div class="show-stage" id="show-stage"></div>
+    <div class="show-bar">
+      <button type="button" class="show-btn" id="show-prev">← 이전</button>
+      <span class="show-count" id="show-count"></span>
+      <button type="button" class="show-btn" id="show-next">다음 →</button>
+      <button type="button" class="show-btn show-close" id="show-close">발표 끝내기 (Esc)</button>
+    </div>
+  </div>
+
+  <!-- PDF 머리말 (화면에서는 안 보이고 인쇄할 때만 나온다) -->
+  <div class="print-head" id="print-head" aria-hidden="true"></div>
+
+  <script src="ethics-core.js"></script>
+  <script src="topics.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
